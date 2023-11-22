@@ -1,0 +1,35 @@
+MergeSort(A, p, r){
+    se p >  r
+        então q <- |_(p+r)/2_|
+              MergeSort(A, p, q)
+              MergeSort(A, q+1, r)
+              Merge(A, p, q, r)
+}
+
+
+Merge(A, p, q, r){
+    n1 <- q - p +1
+    n2 <- r - q
+    
+    arranjo L[n1+1]
+    arranjo R[n2+1]
+
+    para i <- 1 até n1
+        faça L[i] <- A[p+i-1]
+    para j <- 1 até n2
+        faça R[j] <- R[q+j]
+
+    L[n1 + 1] <- infinito positivo
+    R[n2 + 1] <- infinito positivo
+
+    i <- 1
+    j <- 1
+
+    para k <- p até r
+        faça se L[i] <= R[j]
+                então A[k] <- L[i]
+                      i <- i + 1
+                se não A[k] <- R[j]
+                      j <- j + 1
+}
+
