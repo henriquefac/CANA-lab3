@@ -17,7 +17,7 @@ Merge(A, p, q, r){
     para i <- 1 até n1
         faça L[i] <- A[p+i-1]
     para j <- 1 até n2
-        faça R[j] <- R[q+j]
+        faça R[j] <- A[q+j]
 
     L[n1 + 1] <- infinito positivo
     R[n2 + 1] <- infinito positivo
