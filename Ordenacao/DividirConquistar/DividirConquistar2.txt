@@ -1,0 +1,23 @@
+QuickSort(A, p, r){
+    se p < r
+        então q <- Particao(A, p, r)
+            QuickSort(A, p, q-1)
+            QuickSort(A, q + 1, r)
+}
+
+Particao(A, p, r){
+    x <- A[r]
+    i <- p - 1
+    aux <- 0
+    para j <- p até r - 1
+        faça se A[j] <= x 
+            então i <- i + 1
+                aux <- A[j]
+                A[j] <- A[i]
+                A[i] <- aux
+    aux <- A[r]
+    A[r] <- A[i+1]
+    A[i] <- aux
+    retorne i+1
+             
+}
