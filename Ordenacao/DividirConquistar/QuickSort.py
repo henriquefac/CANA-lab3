@@ -22,6 +22,7 @@ def Partition(A, p, r):
     aux = A[r]
     A[r] = A[i+1]
     A[i+1] = aux
+    print(A)
     return i+1
 
 A = vetorAleatorio()
