@@ -11,4 +11,4 @@ for i in range(len(vetor)):
             aux = vetor[i]
             vetor[i] = vetor[j]
             vetor[j] = aux
-print(vetor)
+            print(vetor)

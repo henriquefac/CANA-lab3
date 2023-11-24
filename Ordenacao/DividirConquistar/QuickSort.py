@@ -18,6 +18,7 @@ def Partition(A, p, r):
             aux = A[j]
             A[j] = A[i]
             A[i] = aux 
+        print(A)
     aux = A[r]
     A[r] = A[i+1]
     A[i+1] = aux
@@ -30,5 +31,3 @@ r = len(A) -1
 print(A)
 
 QuickSort(A, p, r)
-
-print(A)

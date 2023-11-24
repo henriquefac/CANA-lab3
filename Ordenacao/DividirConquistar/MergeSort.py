@@ -27,6 +27,7 @@ def Merge(A, p, q, r):
         else:
             A[k] = R[j]
             j += 1
+        print(A)
 
 
 A = vetorAleatorio()
@@ -35,4 +36,3 @@ r = len(A) - 1
 print(A)    
 
 MergeSort(A, p, r)
-print(A)
