@@ -1,0 +1,42 @@
+Função check_column(board, row, column):
+    Para i de row até 0, passo -1 faça
+        Se board[i][column] == 1 então
+            Retorne Falso
+    Retorne Verdadeiro
+
+Função check_diagonal(board, row, column):
+    Para i, j em zip(range(row, -1, -1), range(column, -1, -1)) faça
+        Se board[i][j] == 1 então
+            Retorne Falso
+    Para i, j em zip(range(row, -1, -1), range(column, n, 1)) faça
+        Se board[i][j] == 1 então
+            Retorne Falso
+    Retorne Verdadeiro
+
+Procedimento nqn(board, row):
+    Se row == n então
+        Adicione uma cópia da configuração atual do tabuleiro em solutions
+        Retorne
+    Para i de 0 até n-1 faça
+        Se check_column(board, row, i) e check_diagonal(board, row, i) então
+            board[row][i] = 1
+            Chame nqn(board, row + 1)
+            board[row][i] = 0
+
+Procedimento imprimir_solucoes(solutions):
+    Para cada solução em solutions faça
+        Para cada linha em solução faça
+            Imprima linha
+        Imprima uma linha em branco
+
+
+n = LeiaInteiro()
+
+
+board = Matriz de tamanho n x n, preenchida com zeros
+solutions = Lista vazia
+
+nqn(board, 0)
+
+
+imprimir_solucoes(solutions)
