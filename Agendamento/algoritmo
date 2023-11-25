@@ -1,0 +1,19 @@
+Procedimento greedy_project_selection_with_print(projects):
+    Ordenar projects com base em (lucro / (fim - início)), em ordem decrescente
+
+    selected_projects = ListaVazia
+    current_end = MenosInfinito
+
+    Para cada project em projects:
+        início, fim, lucro = project
+        Se início >= current_end, então:
+            Adicionar project a selected_projects
+            current_end = fim
+            Imprimir "Projeto selecionado - Data de Início: {início}, Data de Conclusão: {fim}, Lucro: {lucro}"
+
+    Retornar selected_projects
+
+Fim do Procedimento
+
+projects = [(1, 3, 5), (2, 5, 8), (4, 6, 3), (6, 8, 2)]
+resultado = greedy_project_selection_with_print(projects)
