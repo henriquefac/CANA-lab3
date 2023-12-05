@@ -1,0 +1,33 @@
+função fibonacci_dc(n):
+    se n <= 1:
+        retornar n
+    senão:
+        retornar fibonacci_dc(n - 1) + fibonacci_dc(n - 2)
+
+
+Analise de tempo:
+1
+fibonacci(n) = fibonacci(n-1) + fibonacci(n-2) 2
+
+fibonacci(n-1) = fibonacci(n-2) + fibonacci(n-3)/fibonacci(n-2) = fibonacci(n-3) + fibonacci(n-4)  4
+
+fibonacci(n-2) = fibonacci(n-3) + fibonacci(n-4)/fibonacci(n-3) = fibonacci(n-4) + fibonacci(n-5)/fibonacci(n-3) = fibonacci(n-4) + fibonacci(n-5)/fibonacci(n-4) = fibonacci(n-5) + fibonacci(n-6)  8
+
+.
+.
+.
+...  fibonacci(1) + fibonacci(0)...
+
+
+altura igual a n e o númeor de chamadas duplica a cada nível, logo a complexidade é 2^n
+
+
+
+Analise de espaço:
+
+
+função fibonacci_dc(n): 					1
+    se n <= 1:							
+        retornar n						0
+    senão:								
+        retornar fibonacci_dc(n - 1) + fibonacci_dc(n - 2)	0

@@ -1,0 +1,42 @@
+
+função fibonacci_bottom_up(n):
+    se n <= 1:
+        retornar n
+    fib = array preenchido com 0 de tamanho n + 1
+    fib[1] = 1
+    para i de 2 até n:
+        fib[i] = fib[i - 1] + fib[i - 2]
+    retornar fib[n]
+
+
+complexidade de tempo:
+
+
+função fibonacci_bottom_up(n):
+    se n <= 1:						1
+        retornar n					1
+    fib = array preenchido com 0 de tamanho n + 1	1
+    fib[1] = 1						1
+    para i de 2 até n:					n-1
+        fib[i] = fib[i - 1] + fib[i - 2]		n-2
+    retornar fib[n]					1
+
+
+complexidade é igual a n
+
+
+
+complexidade de espaço:
+
+
+função fibonacci_bottom_up(n):				1
+    se n <= 1:
+        retornar n
+    fib = array preenchido com 0 de tamanho n + 1	n+1
+    fib[1] = 1
+    para i de 2 até n:
+        fib[i] = fib[i - 1] + fib[i - 2]
+    retornar fib[n]
+
+complexidade de espaço = n
+

@@ -1,0 +1,49 @@
+função fibonacci_top_down(n, memo = {}):
+    se n <= 1:
+        retornar n
+    senão, se n não estiver em memo:
+        memo[n] = fibonacci_top_down(n - 1, memo) + fibonacci_top_down(n - 2, memo)
+    retornar memo[n]
+
+
+
+
+
+
+complexidade de tempo
+
+
+ftd(n)
+
+ftd(n-1)
+
+ftd(n-2)
+
+ftd(n-3)
+
+ftd(n-4)
+
+ftd(n-5)
+
+...
+
+ftd(0)
+
+
+ltura igual a n, apenas uma chamada por nível, logo complexidade é n
+
+
+complexidade de espaço
+
+
+função fibonacci_top_down(n, memo = {}):						1+n
+    se n <= 1:										
+        retornar n									0
+    senão, se n não estiver em memo:
+        memo[n] = fibonacci_top_down(n - 1, memo) + fibonacci_top_down(n - 2, memo)	0
+    retornar memo[n]									0
+
+
+complexidade de espaço: n
+
+
