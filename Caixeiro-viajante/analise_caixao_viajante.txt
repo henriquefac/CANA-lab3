@@ -1,0 +1,117 @@
+List<List<int>> gerarGrafo(int n) {
+  // Tempo: O(n^2), Espaço: O(n^2)
+  Random random = Random();
+  List<List<int>> grafo = List.generate(n, (index) => List<int>.filled(n, 0));
+
+  // Tempo: O(n^2), Espaço: O(1)
+  for (int i = 0; i < n; i++) {
+    for (int j = 0; j < n; j++) {
+      // Tempo: O(1), Espaço: O(1)
+      if (i != j) {
+        grafo[i][j] = random.nextInt(20) + 1;
+      }
+    }
+  }
+
+  // Tempo: O(1), Espaço: O(n^2)
+  return grafo;
+}
+---------------------------------------------
+Tempo: n² + 1 + 1 + n² + 1 + 1 + 1 + 1 = n²
+espaço: n² + 1 + 1 + n² = n²
+--------------------------------------------
+
+
+
+List<int> encontrarMenorRota(List<List<int>> grafo) {
+    // Tempo: O(1), Espaço: O(n)
+    int n = grafo.length;
+    // Tempo: O(n), Espaço: O(n)
+    List<int> cidades = List.generate(n, (index) => index);
+    // Tempo: O(n^2 * n!), Espaço: O(n)
+    List<int> melhorRota = List.from(cidades);
+    // Tempo: O(1), Espaço: O(1)
+    int menorDistancia = calcularDistancia(grafo, melhorRota);
+
+    // Tempo: O(n^3 * n!), Espaço: O(1)
+    int interacao = 1;
+    do {
+      // Tempo: O(n^2), Espaço: O(1)
+      int distanciaAtual = calcularDistancia(grafo, cidades);
+      print("Interação $interacao: Rota = $cidades, Distância = $distanciaAtual");
+
+      // Tempo: O(n), Espaço: O(1)
+      if (distanciaAtual < menorDistancia) {
+        // Tempo: O(n), Espaço: O(n)
+        menorDistancia = distanciaAtual;
+        // Tempo: O(n), Espaço: O(n)
+        melhorRota.setAll(0, cidades);
+      }
+      // Tempo: O(n!), Espaço: O(1)
+      interacao++;
+    } while (proxPermut(cidades));
+
+    // Tempo: O(1), Espaço: O(n)
+    return melhorRota;
+  }
+
+--------------------------------------------------------------------------------
+Tempo: 1 + n + (n² * n!) + 1 + (n³ * n!) + n² + n + n + n + n! + 1 = O(n³ * n!)
+Espaço: n + n + n + 1 + 1 + 1 + 1 + n + 1 + n = O(n)
+--------------------------------------------------------------------------------
+
+
+
+int calcularDistancia(List<List<int>> grafo, List<int> rota) {
+    // Tempo: O(n), Espaço: O(1)
+    int distancia = 0;
+    // Tempo: O(n), Espaço: O(1)
+    for (int i = 0; i < rota.length - 1; i++) {
+      // Tempo: O(1), Espaço: O(1)
+      distancia += grafo[rota[i]][rota[i + 1]];
+    }
+    // Tempo: O(1), Espaço: O(1)
+    distancia += grafo[rota.last][rota.first];
+    // Tempo: O(1), Espaço: O(1)
+    return distancia;
+  }
+------------------------------------
+Tempo: n + n + 1 + 1 + 1 = O(n)
+Espaço = 1 + 1 + 1 + 1 + 1 = O(1)
+-------------------------------------
+
+
+
+bool proxPermut(List<int> array) {
+    // Tempo: O(n!), Espaço: O(1)
+    int i = array.length - 1;
+    while (i > 0 && array[i - 1] >= array[i]) {
+      // Tempo: O(n), Espaço: O(1)
+      i--;
+    }
+
+    // Tempo: O(n!), Espaço: O(1)
+    if (i <= 0) {
+      // Tempo: O(1), Espaço: O(1)
+      return false;
+    }
+
+    // Tempo: O(n!), Espaço: O(1)
+    int j = array.length - 1;
+    while (array[j] <= array[i - 1]) {
+      // Tempo: O(n), Espaço: O(1)
+      j--;
+    }
+
+    // Tempo: O(n!), Espaço: O(1)
+    array[i - 1] ^= array[j];
+    array[j] ^= array
+  }
+
+------------------------------------------------
+Tempo: n! + n + n! + 1 + n! + n + n! = O(n!)
+Espaço: 1 + 1 + 1 + 1 + 1 + 1 + 1 = O(1)
+----------------------------------------------
+
+
+

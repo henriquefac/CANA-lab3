@@ -1,0 +1,168 @@
+EXERCÍCIO 1:
+===========================================================
+FORÇA BRUTA
+Código em Python:
+						TEMPO:
+from vetorAleatorio import vetorAleatorio	O(1)
+vetor = vetorAleatorio()			O(1)
+print(vetor)					O(1)
+
+aux = 0						O(1)
+for i in range(len(vetor)):			O(n)
+    for j in range(len(vetor)):			O(n^2)
+        if vetor[i] > vetor[j]:			O(n^2)
+            aux = vetor[i]			O(n^2)
+            vetor[i] = vetor[j]			O(n^2)
+            vetor[j] = aux			O(n^2)
+            print(vetor)			O(n^2)
+			TOTAL: TEMPO: O(n^2) ESPAÇO: O(1) 
+
+Pseudocódigo:----------------------------------------------
+
+c ← primeiro(S)
+enquanto c ≠ vazio faça
+    se validar(S,c) então fim(S, c)
+    c ← próximo(S,c)
+fim enquanto
+
+===========================================================
+
+MERGE SORT
+Código Python:
+
+import math					TEMPO:
+from vetorAleatorio import vetorAleatorio
+def MergeSort(A, p, r):
+    if p < r:					O(1)
+        q = int((p + r) / 2)			O(1)
+        MergeSort(A, p, q)			O(logn)
+        MergeSort(A, q + 1, r)			O(logn)
+        Merge(A, p, q, r)
+
+def Merge(A, p, q, r):
+    n1 = q - p + 1				O(1)
+    n2 = r - q					O(1)
+
+    L = []
+    R = []
+    for i in range(int(n1)):			O(n1)
+        L.append(A[p + i])
+    for i in range(int(n2)):			O(n2)
+        R.append(A[q + 1 + i])
+
+    i = 0
+    j = 0
+    for k in range(p, r + 1):			O(1)
+        if i < n1 and (j >= n2 or L[i] >= R[j]):O(1)
+            A[k] = L[i]				O(1)
+            i += 1
+        else:
+            A[k] = R[j]				O(1)
+            j += 1
+        print(A)
+A = vetorAleatorio()
+p = 0
+r = len(A) - 1
+print(A)    
+
+MergeSort(A, p, r)
+			TOTAL: TEMPO: O(nlogn) ESPAÇO: O(n)
+
+Pseudocódigo:----------------------------------------------
+
+função mergesort (vetor a)
+     se (n == 1) retornar a
+
+     vetor l1 = a[0] ... a[n/2]
+     vetor l2 = a[n/2 + 1] ... a[n]
+
+     l1 = mergesort(l1)
+     l2 = mergesort(l2)
+
+     retornar mesclar(l1, l2)
+fim da função mergesort
+
+função mesclar (vetor a, vetor b)
+     vetor c
+
+     enquanto (a e b têm elementos)
+          if (a[0] > b[0])
+               adicionar b[0] ao final de c
+               remover b[0] de b
+          senão
+               adicionar a[0] ao final de c
+               remover a[0] de a
+     enquanto (a tem elementos)
+          adicionar a[0] ao final de c
+          remover a[0] de a
+     enquanto (b tem elementos)
+          adicionar b[0] ao final de c
+          remover b[0] de b
+     retornar c
+fim da função mesclar
+
+===========================================================
+
+QUICKSORT
+Código Python:
+
+from vetorAleatorio import vetorAleatorio	TEMPO:
+
+def QuickSort(A, p, r):
+    if p < r:					O(1)
+        q = Partition(A, p, r)			O(n)
+        QuickSort(A, p, q-1)			T(n/2)
+        QuickSort(A, q+1, r)			T(n/2)
+
+def Partition(A, p, r):
+    x = A[r]					
+    i = p - 1					
+    aux = 0					
+    for j in range(p, r):			O(n)
+        if A[j] >= x:				O(n)
+            i += 1				O(n)
+            aux = A[j]				O(n)
+            A[j] = A[i]				O(n)
+            A[i] = aux				O(n)
+        print(A)				O(n)
+    aux = A[r]					
+    A[r] = A[i+1]				
+    A[i+1] = aux				
+    print(A)					
+    return i + 1
+						T(n)=2T(n/2)+O(n)		
+			TOTAL: TEMPO: O(nlogn) ESPAÇO: O(log2n)
+
+Pseudocódigo:----------------------------------------------
+
+procedimento QuickSort(X[], IniVet, FimVet)
+var
+   i, j, pivo, aux
+início
+   i <- IniVet
+   j <- FimVet
+   pivo <- X[(IniVet + FimVet) div 2]
+   enquanto(i <= j)
+           enquanto (X[i] < pivo) faça
+                i <- i + 1
+           fimEnquanto
+           enquanto (X[j] > pivo) faça
+                j <- j - 1
+           fimEnquanto
+           se (i <= j) então
+                aux  <- X[i]
+                X[i] <- X[j]
+                X[j] <- aux
+                i <- i + 1
+                j <- j - 1
+           fimSe
+   fimEnquanto
+   se (IniVet < j) então
+       QuickSort(X, IniVet, j)
+   fimSe
+   se (i < FimVet) então
+       QuickSort(X, i, FimVet)
+   fimSe
+fimProcedimento
+
+===========================================================

@@ -1,0 +1,101 @@
+Analise da Função check_column
+
+board = [[0 for i in range(n)] for i in range(n)]   # Custo: n²
+
+solutions = []                                      # Custo: 1
+
+def check_column(board, row, column):
+    for i in range(row, -1, -1):                      # Custo: row + 1 
+        if board[i][column] == 1:                     # Custo: 1
+            return False                              # Custo: 1
+    return True                                       # Custo: 1
+
+Analise de tempo:
+n² + 1 + (row + 1) * (1 + 1) = n² + 2(row + 1) = n² + 2n => O(n²)
+
+
+
+board = [[0 for i in range(n)] for i in range(n)]   # Espaço: n² 
+
+solutions = []                                      # Espaço: 1 
+
+def check_column(board, row, column):
+    for i in range(row, -1, -1):                      # Espaço: 1 
+        if board[i][column] == 1:                     # Espaço: 1 
+            return False 
+    return True                                       # Espaço: 1 
+
+Analise de Espaço: 
+n² + 1 + 1 + 1 + 1 = n² + 4 => O(n²)
+
+
+
+
+
+
+
+Analise da Função chech_diagonal
+
+def check_diagonal(board, row, column):
+    for i, j in zip(range(row, -1, -1), range(column, -1, -1)):  # Custo: n
+        if board[i][j] == 1:                                    # Custo: 1
+            return False                                        # Custo: 1
+    for i, j in zip(range(row, -1, -1), range(column, n, 1)):   # Custo: n
+        if board[i][j] == 1:                                    # Custo: 1
+            return False                                        # Custo: 1
+    return True                                                  # Custo: 1
+
+Analise de tempo:
+n + 1 + 1 + n + 1 + 1 + 1 = 2n + 5 => O(n)
+
+
+def check_diagonal(board, row, column):
+    for i, j in zip(range(row, -1, -1), range(column, -1, -1)):  # Espaço: 1 
+        if board[i][j] == 1:                                    # Espaço: 1 
+            return False
+    for i, j in zip(range(row, -1, -1), range(column, n, 1)):   # Espaço: 1 
+        if board[i][j] == 1:                                    # Espaço: 1 
+            return False
+    return True                                                  # Espaço: 1 
+
+Analise de Espaço:
+1+ 1 + 1 + 1 + 1 = 5 => O(1)
+
+
+
+
+
+Analise da Função nqm
+
+def nqn(board, row):
+    if row == n:                                                          # Custo: n²
+        
+        solutions.append([row[:] for row in board]) 
+        return
+    
+    for i in range(n):                                                    # Custo: n 
+        if check_column(board, row, i) and check_diagonal(board, row, i): #Custo: n
+            board[row][i] = 1                                             # Custo: 1
+            nqn(board, row + 1)                                           # Custo: n^3
+            board[row][i] = 0                                             # Custo: 1
+
+nqn(board, 0)
+
+Analise de tempo:
+n² + n + n + 1 + n^3 + 1 = n^3 + n² + 2n + 2 => O(n^3)
+
+def nqn(board, row):
+    if row == n:                                                          # Espaço: n²
+        
+        solutions.append([row[:] for row in board]) 
+        return
+    
+    for i in range(n): 
+        if check_column(board, row, i) and check_diagonal(board, row, i): 
+            board[row][i] = 1                                             # Espaço: 1 
+            nqn(board, row + 1) 
+            board[row][i] = 0                                             # Espaço: 1
+
+nqn(board, 0) 
+
+Analise de Espaço: n² + 1 + 1 = n² + 2 => O(n²)
