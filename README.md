@@ -15,3 +15,6 @@ realizou exercídio 3: oito-damas e analisou o exercício 4: agendamento
 
 Pedro Andrade 2214627
 realizou exercídio 2: Fibonacci e analisou o exercício 5: caxeiro-viajante
+
+Thiago de Oliveira/2210387
+realizou exercídio 4: agendamento e analisou o exercício 3: oito-damas
